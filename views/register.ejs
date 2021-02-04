@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-include('layouts/header')-%>
+
+  <body>
+    <!-- Navigation -->
+    <%-include('layouts/navbar')-%>
+
+    <header
+      class="masthead"
+      style="background-image: url('/img/contact-bg.jpg')"
+    >
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+              <h1>Create an account</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>Sign Up</p>
+          <% if(errors != null && errors.length > 0){ %>
+          <ul class="list-group">
+            <% for (var i = 0; i < errors.length; i++) { %>
+            <li class="list-group-item list-group-item-danger">
+              <%= errors[i] %>
+            </li>
+            <% } %>
+          </ul>
+          <% } %>
+          <form action="/users/register" method="POST">
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label for="name">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  name="username"
+                  placeholder="Username"
+                />
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="password"
+                  id="password"
+                  name="password"
+                  data-validation-required-message="Please enter email."
+                />
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <br />
+            <div id="success"></div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              id="sendMessageButton"
+            >
+              Create an account
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+    <!-- Footer -->
+    <%-include("layouts/footer")-%>
+    <!-- Scripts -->
+    <%-include("layouts/scripts")-%>
+  </body>
+</html>
